@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import lottie from 'lottie-web';
 import successAnimation from '../assets/success-animation.json'; 
+const BASE_URL= process.env.BASE_URL;
 
 const ReferralModal = ({ isOpen, onRequestClose }) => {
   const [successMessage, setSuccessMessage] = useState('');
@@ -35,7 +36,7 @@ const ReferralModal = ({ isOpen, onRequestClose }) => {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/referral', values);
+      const response = await axios.post('${BASE_URL}/api/referral', values);
       setSuccessMessage('Referral created successfully!');
       setIsSubmitting(false);
       resetForm();
